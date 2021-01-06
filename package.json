@@ -1,0 +1,19 @@
+{
+  "name": "client-relationship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jajabenit250/client-relationship.git"
+  },
+  "author": "Benit Havugimana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jajabenit250/client-relationship/issues"
+  },
+  "homepage": "https://github.com/Jajabenit250/client-relationship#readme"
+}
