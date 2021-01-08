@@ -1,8 +1,8 @@
 require("dotenv").config();
 
-const cors = require("cors");
-const express = require("express");
-const mongoose = require("mongoose");
+import cors from "cors";
+import express from "express";
+import mongoose from "mongoose";
 
 // Setting up ports
 const connUri = process.env.MONGO_PROD_CONN_URL;
@@ -36,9 +36,9 @@ connection.on("error", (err) => {
 
 
 // Configure Routes
-require("./routes/index")(app);
+// require("./routes/index")(app);
 
 // Start the server
-server.listen(PORT, () =>
+app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}/`)
 );
