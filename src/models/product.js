@@ -45,4 +45,4 @@ const ProductSchema = new mongoose.Schema({
 }, {timestamps: true});
 
 mongoose.set('useFindAndModify', false);
-module.exports = mongoose.model('Codes', ProductSchema);
+module.exports = mongoose.model('Products', ProductSchema);

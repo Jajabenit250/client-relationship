@@ -51,4 +51,4 @@ const UserSchema = new mongoose.Schema({
 }, {timestamps: true});
 
 mongoose.set('useFindAndModify', false);
-module.exports = mongoose.model('Codes', UserSchema);
+module.exports = mongoose.model('Users', UserSchema);

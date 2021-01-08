@@ -20,4 +20,4 @@ const PaymentSchema = new mongoose.Schema({
 }, {timestamps: true});
 
 mongoose.set('useFindAndModify', false);
-module.exports = mongoose.model('Codes', PaymentSchema);
+module.exports = mongoose.model('Payments', PaymentSchema);
