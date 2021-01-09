@@ -16,6 +16,7 @@ app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/api/v1', Route);
+app.get('/', (req, res) => res.status(200).send({ status: 200, message: 'Welcome to Client Management APIs' }));
 
 // Configure mongoose's promise to global promise
 mongoose.promise = global.Promise;
@@ -35,10 +36,6 @@ connection.on("error", (err) => {
   );
   process.exit();
 });
-
-
-// Configure Routes
-// require("./routes/index")(app);
 
 // Start the server
 app.listen(PORT, () =>
