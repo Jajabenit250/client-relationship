@@ -1,5 +1,6 @@
-// Mobile phone short codes base model
-
+/**
+ * Product base model
+ */
 import mongoose from 'mongoose';
 
 const ProductSchema = new mongoose.Schema({
@@ -9,39 +10,39 @@ const ProductSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: 'A code is required',
+        required: 'Product Name is required',
         max: 100
     },
     type: {
         type: String,
-        required: 'A code is required',
+        required: 'Product Type is required',
         max: 100
     },
     description: {
         type: String,
-        required: 'A code is required',
+        required: 'Product Description is required',
         max: 100
     },
     startDate: {
         type: String,
-        required: 'A code is required',
+        required: 'Product Implementation Start Date is required',
         max: 100
     },
     endDate: {
         type: String,
-        required: 'A code is required',
+        required: 'Product Implementation End Date  is required',
         max: 100
     },
     attachments: {
         type: String,
-        required: 'A code is required',
+        required: 'Attachments are required',
         max: 100
     },
     otherLinks: {
         type: String,
-        required: 'A code is required',
+        required: 'other URL is required',
         max: 100
-    }
+    },
 }, {timestamps: true});
 
 mongoose.set('useFindAndModify', false);

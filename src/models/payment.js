@@ -1,4 +1,6 @@
-// Mobile phone short codes base model
+/**
+ * Payment base model
+ */
 
 import mongoose from 'mongoose';
 
@@ -14,8 +16,17 @@ const PaymentSchema = new mongoose.Schema({
     },
     currency: {
         type: String,
-        required: 'Currency',
+        required: 'Currency is required',
         max: 100
+    },
+    subscriptionType: {
+        type: String,
+        required: 'Currency is required',
+        max: 100
+    },
+    subscriptedUserId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Users"
     }
 }, {timestamps: true});
 

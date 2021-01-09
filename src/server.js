@@ -3,6 +3,7 @@ require("dotenv").config();
 import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
+import Route from './routes/index';
 
 // Setting up ports
 const connUri = process.env.MONGO_PROD_CONN_URL;
@@ -14,6 +15,7 @@ const app = express();
 app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use('/api/v1', Route);
 
 // Configure mongoose's promise to global promise
 mongoose.promise = global.Promise;

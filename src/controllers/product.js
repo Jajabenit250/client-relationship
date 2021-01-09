@@ -1,10 +1,10 @@
 import dotenv, { config } from 'dotenv';
-import ResponseService from '../utils/response.util';
+import response from '../utils/response';
 import Product from '../models/product';
 
 
 /**
- * Auth controller
+ * Product controller
  */
 export default class ProductController {
 	/**

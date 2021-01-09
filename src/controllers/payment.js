@@ -1,10 +1,10 @@
 import dotenv, { config } from 'dotenv';
-import ResponseService from '../utils/response.util';
+import response from '../utils/response';
 import Payment from '../models/payment';
 
 
 /**
- * Auth controller
+ * Payment controller
  */
 export default class PaymentController {
 	/**
