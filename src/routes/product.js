@@ -3,13 +3,11 @@
 // Partners can Update and add Designs, Bugs Review and Progress
 
 import express from 'express';
-import userController from '../controllers/user';
-// import verifyToken from '../middlewares/verifyToken';
-// import verifyAdmin from '../middlewares/verify.admin';
+import productContoller from '../controllers/product';
 
 const router = express.Router();
 
-router.post('/add', userController.signUp);
-router.post('/view', userController.signIn);
+router.post('/add', productContoller.createProduct);
+router.post('/view/:productId', productContoller.viewProduct);
 
 export default router;

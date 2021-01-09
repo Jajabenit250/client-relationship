@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: 'Password is required',
+        // required: 'Password is required',
         max: 100
     },
     firstName: {
@@ -22,57 +22,57 @@ const UserSchema = new mongoose.Schema({
     },
     lastName: {
         type: String,
-        required: 'LastName is required',
+        // required: 'LastName is required',
         max: 100
     },
     title: {
         type: String,
-        required: 'User title is required',
+        // required: 'User title is required',
         max: 100
     },
     department: {
         type: String,
-        required: 'A Department is required',
+        // required: 'A Department is required',
         max: 100
     },
     organization: {
         type: String,
-        required: 'Organization is required',
+        // required: 'Organization is required',
         max: 100
     },
     workPhone: {
         type: String,
-        required: 'Work Phone is required',
+        // required: 'Work Phone is required',
         max: 100
     },
     organizationPhone: {
         type: String,
-        required: 'Organizational Phone is required',
+        // required: 'Organizational Phone is required',
         max: 100
     },
     verified: {
         type: Boolean,
-        required: 'if user email is verified is required',
+        // required: 'if user email is verified is required',
         max: 100
     },
     token: {
         type: String,
-        required: 'User token is required',
+        // required: 'User token is required',
         max: 100
     },
     creditCardNumber: {
         type: String,
-        required: 'other URL is required',
+        // required: 'other URL is required',
         max: 100 
     },
     expirationDate: {
         type: String,
-        required: 'other URL is required',
+        // required: 'other URL is required',
         max: 100 
     },
     cvs: {
         type: String,
-        required: 'other URL is required',
+        // required: 'other URL is required',
         max: 100 
     }
 }, {timestamps: true});

@@ -66,11 +66,11 @@ class mailer {
             <div class="Email-wrapper_log"><img src="" alt=""/></div>
             <div class="Email-wrapper_body">
                 <div class="Email-wrapper_body_name">Hi ${userName}!</div>
-                <div class="Email-wrapper_body_message">We are excited to have you onboard. Click the link below to activate your account and be able to travel the world with us.
+                <div class="Email-wrapper_body_message">We are excited to have you onboard. Client Management APIs needs you Verify Email in order continue
     
                 </br>  </br>  </br>  <span id="thanks" style="margin-top: 10px;">Pack your bags and let’s get you started.</span>  </div>
             </div>
-           <a href="${process.env.BASE_URL_REACT}/auth/activate/?token=${token}" class="Email-wrapper_button" style="cursor: pointer !important; justify-self: center; margin-left: 80px; text-decoration: none; color: white;">Activate Account</a>
+           <a href="${process.env.BASE_URL}/auth/activate/?token=${token}" class="Email-wrapper_button" style="cursor: pointer !important; justify-self: center; margin-left: 80px; text-decoration: none; color: white;">Activate Account</a>
     
         </div>
         </body>

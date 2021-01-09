@@ -21,7 +21,12 @@ const PaymentSchema = new mongoose.Schema({
     },
     subscriptionType: {
         type: String,
-        required: 'Currency is required',
+        required: 'Subscription Type is required',
+        max: 100
+    },
+    startDate: {
+        type: Date,
+        required: 'Start Date is required',
         max: 100
     },
     subscriptedUserId: {

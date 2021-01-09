@@ -3,6 +3,8 @@ import dotenv, {
 } from 'dotenv';
 import response from '../utils/response';
 import User from '../models/user';
+import GenerateToken from '../utils/token';
+import mailer from '../utils/mailer';
 
 
 /**
@@ -19,25 +21,51 @@ export default class UserController {
             email,
             firstName
         } = req.body;
+        const data = {
+            email,
+            firstName,
+            verified: false
+        };
+        const token = GenerateToken(data);
+        data.token = token;
+        if (!req.body.email)
+            return response.setError(res, 401, "You have not provided a email for this account.")
         User.findOne({
                 email
             })
             .then(async (user) => {
                 if (user)
-                    return response.setError(res, 401, "The email address you have entered is already associated with another account.")
-                if (!req.body.email)
-                    return response.setError(res, 401, "You have not provided a email for this account.")
+                    return response.setSuccess(res, 401, "The email address you have entered is already associated with another account.", user)
+                else {
+                    const newUser = new User(data);
+                    const saved = newUser
+                        .save()
+                        .then(async (user) => {
+                            const emailView = mailer.activateAccountView(token, firstName);
+                            mailer.sendEmail(email, 'Verification link', emailView);
+                        })
+                    response.setSuccess(res, 200, "user successfully created", saved)
+                }
             })
-            const newUser = new User(req.body);
-    //    await newUser.save().then(async (user) => {
-    //         email,
-    //         firstName,
-    //         verified: false
-    //     });
-        if (user) {
-            response.setSuccess(res, 200, successMessage, user)
-        }
-        return response.setError(res, 404, errorMessage)
+    }
+
+    /**
+     * @param {object} req
+     * @param {object} res
+     * @returns {object} function to updateUser a User
+     */
+    static async updateUser(req, res) {
+        const activate = {
+            verified: true,
+        };
+        const updateUser = await User.findOneAndUpdate(
+            req.user.email, {
+                $set: activate
+            }, {
+                new: true
+            })
+
+        return response.setSuccess(res, 201, "user Successfully Updated", updateUser);
     }
 
     /**
@@ -47,9 +75,9 @@ export default class UserController {
      */
     static async signIn(req, res) {
         if (user) {
-            ResponseService.setSuccess(res, 200, successMessage, user)
+            response.setSuccess(res, 200, "Login Successfull", user)
         }
-        return ResponseService.setError(res, 404, errorMessage)
+        return response.setError(res, 404, "error")
     }
 
     /**
@@ -57,5 +85,16 @@ export default class UserController {
      * @param {object} res
      * @returns {object} function to complete Profile
      */
-    static async editProfile(req, res) {}
+    static async editProfile(req, res) {
+        const updateUser = await User.findOneAndUpdate(
+            req.user.email, {
+                $set: req.body
+            }, {
+                new: true
+            })
+        if (updateUser){
+            return response.setSuccess(res, 201, "user Successfully Updated", updateUser);
+        }
+        return response.setError(res, 401, "error while updating profile");
+    }
 }
