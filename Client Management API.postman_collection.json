@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "b6bdc295-8b52-48fa-b7ce-36780ad39353",
+		"name": "Client Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "SignUp User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"jaja\",\n    \"email\": \"jajaiheed@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clientrelationship.herokuapp.com/api/v1/auth/signup",
+							"protocol": "https",
+							"host": [
+								"clientrelationship",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://clientrelationship.herokuapp.com/api/v1/auth/activate/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiYmVuaXRAc29tYWluYy50ZWNoIiwiaWF0IjoxNjEwMzA0Mjg4LCJleHAiOjE2MTAzOTA2ODh9.Q8oeb_IHo6TgbZ5CEJPNntw9Mdn4fjh5U7fGpch0OPo",
+							"protocol": "https",
+							"host": [
+								"clientrelationship",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"activate",
+								"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiYmVuaXRAc29tYWluYy50ZWNoIiwiaWF0IjoxNjEwMzA0Mjg4LCJleHAiOjE2MTAzOTA2ODh9.Q8oeb_IHo6TgbZ5CEJPNntw9Mdn4fjh5U7fGpch0OPo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiYmVuaXRAc29tYWluYy50ZWNoIiwiaWF0IjoxNjEwMzA0Mjg4LCJleHAiOjE2MTAzOTA2ODh9.Q8oeb_IHo6TgbZ5CEJPNntw9Mdn4fjh5U7fGpch0OPo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiYmVuaXRAc29tYWluYy50ZWNoIiwiaWF0IjoxNjEwMzA0Mjg4LCJleHAiOjE2MTAzOTA2ODh9.Q8oeb_IHo6TgbZ5CEJPNntw9Mdn4fjh5U7fGpch0OPo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"benit\",\n    \"lastName\": \"jaja\",\n    \"title\": \"cto\",\n    \"department\": \"software\",\n    \"organization\": \"soma\",\n    \"workPhone\": \"+250782979784\",\n    \"organizationPhone\": \"+250782979784\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clientrelationship.herokuapp.com/api/v1/auth/profile",
+							"protocol": "https",
+							"host": [
+								"clientrelationship",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiYmVuaXRAc29tYWluYy50ZWNoIiwiaWF0IjoxNjEwMzA0Mjg4LCJleHAiOjE2MTAzOTA2ODh9.Q8oeb_IHo6TgbZ5CEJPNntw9Mdn4fjh5U7fGpch0OPo",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"jajabenit@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clientrelationship.herokuapp.com/api/v1/auth/signin",
+							"protocol": "https",
+							"host": [
+								"clientrelationship",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiamFqYWJlbml0QGdtYWlsLmNvbSIsImlhdCI6MTYxMDMwNzcwOCwiZXhwIjoxNjEwMzk0MTA4fQ.73_nBkQq7t04AwpgoJtg9KoWhnc8KG984COje2Nqo_w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"website\",\n    \"type\" : \"project\",\n    \"description\" : \"a pages for showing all things\",\n    \"startDate\"  : \"01/17/2021\",\n    \"endDate\" : \"04/17/2021\",\n    \"attachments\" : \"https://docs.google.com/document/d/16E89ZPh6YDPaJ56IAuJ8-oVlP21NQpF-QK8JzPsgKNo/edit?ts=5ff51fde , https://docs.google.com/document/d/16E89ZPh6YDPaJ56IAuJ8-oVlP21NQpF-QK8JzPsgKNo/edit?ts=5ff51fde\",\n    \"otherLinks\" : \"https://docs.google.com/document/d/16E89ZPh6YDPaJ56IAuJ8-oVlP21NQpF-QK8JzPsgKNo/edit?ts=5ff51fde\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clientrelationship.herokuapp.com/api/v1/product/add",
+							"protocol": "https",
+							"host": [
+								"clientrelationship",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://clientrelationship.herokuapp.com/api/v1/product/view/5ffb621c255621b68ca2e7ba",
+							"protocol": "https",
+							"host": [
+								"clientrelationship",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"view",
+								"5ffb621c255621b68ca2e7ba"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Add Payment Info",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiamFqYWJlbml0QGdtYWlsLmNvbSIsImlhdCI6MTYxMDMwNzcwOCwiZXhwIjoxNjEwMzk0MTA4fQ.73_nBkQq7t04AwpgoJtg9KoWhnc8KG984COje2Nqo_w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"creditCardNumber\" : \"4111111111111111\",\n    \"expirationDate\" : \"10/22\",\n    \"cvs\" : \"722\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clientrelationship.herokuapp.com/api/v1/payment/info",
+							"protocol": "https",
+							"host": [
+								"clientrelationship",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payment",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscribe To A service/product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiamFqYWJlbml0QGdtYWlsLmNvbSIsImlhdCI6MTYxMDMwNzcwOCwiZXhwIjoxNjEwMzk0MTA4fQ.73_nBkQq7t04AwpgoJtg9KoWhnc8KG984COje2Nqo_w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\" : \"200\",\n    \"currency\" : \"USD\",\n    \"subscriptionType\" : \"monthly\",\n    \"startDate\" : \"01/17/2021\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://clientrelationship.herokuapp.com/api/v1/payment/subscribe/5ffb621c255621b68ca2e7ba",
+							"protocol": "https",
+							"host": [
+								"clientrelationship",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payment",
+								"subscribe",
+								"5ffb621c255621b68ca2e7ba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service Payment Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiamFqYWJlbml0QGdtYWlsLmNvbSIsImlhdCI6MTYxMDMwNzcwOCwiZXhwIjoxNjEwMzk0MTA4fQ.73_nBkQq7t04AwpgoJtg9KoWhnc8KG984COje2Nqo_w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://clientrelationship.herokuapp.com/api/v1/payment/subscribe/5ffb6dbd65bd7fcae40367d5",
+							"protocol": "https",
+							"host": [
+								"clientrelationship",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payment",
+								"subscribe",
+								"5ffb6dbd65bd7fcae40367d5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

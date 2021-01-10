@@ -26,9 +26,12 @@ export default class ProductController {
 
         const newProduct = new Product(data);
         newProduct.save().then(async (product) => {
-           return response.setSuccess(res, 200, "user successfully created", saved)
+            if (product){
+                return response.setSuccess(res, 201, "Product Successfully created", product)
+            }
+            response.setError(res, 401, "Error while creating a product")
         }).catch(async (error) => {
-            response.setSuccess(res, 401, "user successfully created", saved)
+            response.setError(res, 401, "Error while creating a product")
         })
 
     }
@@ -40,12 +43,16 @@ export default class ProductController {
 	 */
 	static async viewProduct(req, res) {
         const productId = req.params.productId;
-        const productDetails = Product.findOne({
-            productId
+        Product.findOne({
+            "_id" : productId
         })
         .then(async (product) => {
-            if (product){}
+            if (product){
+                response.setSuccess(res, 201, "Product Information", product)
+            }
+            response.setError(res, 401, "Product Not Found")
+        }).catch(async (error) => {
+            response.setError(res, 401, "Product Not Found")
         })
-        return response.setSuccess(res, 201, "Product Information", productDetails)
     }
 }

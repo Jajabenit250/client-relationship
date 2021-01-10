@@ -36,17 +36,17 @@ export default class UserMiddleware {
    */
   static headerTokenVerification(req, res, next) {
     if (req.headers.token === undefined) {
-      return response.errorMessage(
+      return response.setError(
         res,
-        'Please Set The Authorization Header!',
         401,
+        'Please Set The Authorization Header!',
       );
     }
     if (!/(?=^[Bb]earer)/.test(req.headers.token)) {
-      return response.errorMessage(
+      return response.setError(
         res,
-        '"Bearer" not found Invalid token!',
         401,
+        '"Bearer" not found Invalid token!',
       );
     }
     const token = req.headers.token.split(' ')[1];

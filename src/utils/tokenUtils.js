@@ -6,9 +6,9 @@ class verifyTokens {
     static verifyAllTokens = async (req, res, next, token) => {
         if (!token) {
             return response.setError(
+                401,
                 res,
                 'No token provided, Access Denied!',
-                401,
             );
         }
         try {
@@ -22,18 +22,18 @@ class verifyTokens {
             if (user === undefined) {
                 return response.setError(
                     res,
-                    'You provided the invalid token!',
                     401,
+                    'You provided the invalid token!',
                 );
             }
 
             if (user.token !== token && user.token === null) {
-                return response.setError(res, 'You need to signin first!', 401);
+                return response.setError(res, 401, 'You need to signin first!');
             }
             req.user = user;
             return next();
         } catch (error) {
-            return response.setError(res, 'You provided the invalid token!', 401);
+            return response.setError(res, 401, 'You provided the invalid token!');
         }
     };
 }

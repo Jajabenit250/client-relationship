@@ -70,3 +70,36 @@ export const validateUpdateProfileBody = (req, res, next) => {
 	}
 	next();
 };
+
+export const validateCardProfileBody = (req, res, next) => {
+	const schema = Joi.object({
+		creditCardNumber: Joi.string().length(16).pattern(/^[0-9]+$/).required().messages({
+			'any.required': 'credit card is required',
+			'number.empty': 'Credit Card Number is not allowed to be empty',
+			'number.min': 'Credit Card Number length must be 16 characters long',
+		}),
+		expirationDate: Joi.string().min(2).required().messages({
+			'any.required': 'Last Name is required',
+			'string.empty': 'Last Name is not allowed to be empty',
+			'string.min': 'Last Name length must be at least 2 characters long',
+		}),
+		cvs : Joi.string().length(3).pattern(/^[0-9]+$/).required().messages({
+			'any.required': 'CVS is required',
+			'number.empty': 'CVS is not allowed to be empty',
+			'number.min': 'CVS length must be 3 characters long',
+		}),
+
+	}).options({
+		abortEarly: false
+	});
+
+	const {
+		error
+	} = schema.validate(req.body);
+
+	if (error) {
+		const errors = error.details.map(err => err.message);
+		return response.setError(res, 400, errors);
+	}
+	next();
+};

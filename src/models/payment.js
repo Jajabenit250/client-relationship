@@ -25,7 +25,7 @@ const PaymentSchema = new mongoose.Schema({
         max: 100
     },
     startDate: {
-        type: Date,
+        type: String,
         required: 'Start Date is required',
         max: 100
     },

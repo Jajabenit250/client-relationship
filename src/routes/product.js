@@ -4,10 +4,11 @@
 
 import express from 'express';
 import productContoller from '../controllers/product';
+import userMiddleware from '../middlewares/user';
 
 const router = express.Router();
 
-router.post('/add', productContoller.createProduct);
-router.post('/view/:productId', productContoller.viewProduct);
+router.post('/add', userMiddleware.headerTokenVerification, productContoller.createProduct);
+router.get('/view/:productId', productContoller.viewProduct);
 
 export default router;

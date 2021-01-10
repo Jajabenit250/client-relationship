@@ -74,10 +74,20 @@ export default class UserController {
      * @returns {object} function to signIn a User
      */
     static async signIn(req, res) {
-        if (user) {
-            response.setSuccess(res, 200, "Login Successfull", user)
-        }
-        return response.setError(res, 404, "error")
+        const token = GenerateToken(req.body.email);
+        User.findOne({
+                email: req.body.email
+            })
+            .then(async (user) => {
+                if (user) {
+                    user.token = token;
+                    user.save();
+                    if (user.verified) {
+                        response.setSuccess(res, 200, "Login Successfull", user)
+                    } else return response.setSuccess(res, 401, "email is not verified", user)
+                }
+                return response.setError(res, 404, "error")
+            })
     }
 
     /**
@@ -92,7 +102,7 @@ export default class UserController {
             }, {
                 new: true
             })
-        if (updateUser){
+        if (updateUser) {
             return response.setSuccess(res, 201, "user Successfully Updated", updateUser);
         }
         return response.setError(res, 401, "error while updating profile");

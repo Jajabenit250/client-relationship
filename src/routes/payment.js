@@ -4,12 +4,14 @@
 
 import express from 'express';
 import paymentController from '../controllers/payment';
+import userMiddleware from '../middlewares/user';
+import { validateCardProfileBody } from '../utils/validations/user';
 
 const router = express.Router();
 
-router.post('/subscribe/:projectId', paymentController.subscriptions);
-router.get('/subscribe/:paymentId', paymentController.subscriptions);
-router.patch('/info', paymentController.collectPaymentInformation);
+router.post('/subscribe/:projectId', userMiddleware.headerTokenVerification, paymentController.subscriptions);
+router.get('/subscribe/:paymentId', userMiddleware.headerTokenVerification, paymentController.viewPaymentInformation);
+router.patch('/info', userMiddleware.headerTokenVerification, validateCardProfileBody, paymentController.collectPaymentInformation);
 // router.post('/automate', paymentController);
 
 

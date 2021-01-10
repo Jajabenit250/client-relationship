@@ -38,7 +38,7 @@ export default class PaymentController {
             req.user.email);
         if (findUser) {
             const data = {
-                productId: req.body.productId,
+                productId: req.params.productId,
                 amount: req.body.amount,
                 currency: req.body.currency,
                 subscriptionType: req.body.subscriptionType,
@@ -70,12 +70,16 @@ export default class PaymentController {
      */
     static async viewPaymentInformation(req, res) {
         const paymentId = req.params.paymentId;
-        const paymentDetails = Payment.findOne({
-            paymentId
+        Payment.findOne({
+            "_id" : paymentId
         })
         .then(async (card) => {
-            if (card){}
+            if (card){
+                response.setSuccess(res, 201, "Payment Information", card)
+            }
+            response.setError(res, 401, "Payment Info Not Found")
+        }).catch(async (error) => {
+            response.setError(res, 401, "Payment Info Not Found")
         })
-        return response.setSuccess(res, 201, "Payment Information", paymentDetails)
     }
 }
